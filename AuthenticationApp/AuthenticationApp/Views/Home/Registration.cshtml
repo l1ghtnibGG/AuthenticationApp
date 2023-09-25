@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@model UserRegistrationModel;
+
+<div class="row m-auto vh-100 p-4">
+<div class="conteiner d-flex flex-column justify-content-center align-items-center">
+        <div class="form rounded col-lg-6 col-md-10 col-sm-10 col-12 g-0 bg-white justify-content-center align-items-center shadow-lg bg-body">
+        <div class="row g-0">
+            <form method="get" asp-controller="Home" asp-action="Registration" class="col">
+                <button type="submit" class="w-100 btn p-3 btn-success fs-2 text-white">Sing Up</button>
+            </form>
+            <form method="get" asp-controller="Home" asp-action="Login" class="col">
+                <button type="submit" class="w-100 btn p-3 fs-2 btn-light">Log In</button>
+            </form>
+        </div>
+        <div class="row g-0">
+            <div class="col fs-3 mt-5 mb-3 text-center">Sing Up</div>
+            <form method="post" asp-controller="Home" asp-action="Registration">
+                <div class="registration-group">
+                    <div class="row w-100 p-3 g-0">
+                            <label class="col-3 fs-4 d-none d-sm-block">Name</label>
+                        <input name="user.Name" type="text" class="col" placeholder="Enter name">
+                    </div>
+                    <div class="row w-100 p-3 g-0">
+                            <label class="col-3 fs-4 d-none d-sm-block">Email address</label>
+                        <input name="user.Email" type="email" class="col" placeholder="Enter email address">
+                    </div>
+                    <div class="row w-100 p-3 g-0">
+                            <label class="col-3 fs-4 d-none d-sm-block">Password</label>
+                        <input name="user.Password" type="password" class="col" placeholder="Enter password">
+                    </div>
+                    <div class="row w-100 g-0 align-items-center justify-content-center">
+                        <button type="submit" class="col-4 m-4 btn btn-primary">Sing Up</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

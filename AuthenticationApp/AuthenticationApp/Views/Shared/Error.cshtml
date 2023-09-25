@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@model string 
+
+<div class="row m-auto vh-100 p-4">
+    <div class="conteiner d-flex flex-column justify-content-center align-items-center">
+            <div class="form rounded col-lg-6 col-md-10 col-sm-10 col-12 g-0 bg-white justify-content-center align-items-center shadow-lg bg-body">
+        <div class="row g-0">
+            <a asp-controller="Home" asp-action="Registration" class="col w-100 btn p-3 fs-2 btn-light">Registration</a>
+            <a asp-controller="Home" asp-action="Login" class="col w-100 btn p-3 fs-2 btn-light">Log In</a>
+        </div>
+        <div class="row g-0 p-5 text-center">
+            <h2>@Model</h2>
+        </div>
+    </div>
+</div>
+</div>

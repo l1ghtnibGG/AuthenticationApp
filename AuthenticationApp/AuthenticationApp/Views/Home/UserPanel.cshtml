@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@model IQueryable<User>
+
+<form method="post">
+<div class="container-fluid">
+    <div class="row p-3">
+        <h3>@User.Claims.Last().Value</h3>
+    </div>
+    <div class="btn-group w-100 mb-3 g-0" role="group">
+        <button type="submit" asp-controller="Home" asp-action="Block" 
+                class="btn btn-outline-primary p-3 fs-4">Block</button>
+        <button type="submit" asp-controller="Home" asp-action="Unblock" 
+                        class="btn btn-outline-primary p-3 fs-4">Unblock</button>
+        <button type="submit" asp-controller="Home" asp-action="Delete" 
+                                class="btn btn-outline-primary p-3 fs-4">Delete</button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered text-center fs-5">
+            <thread>
+                <tr>
+                    <th scope="col">
+                        <div>
+                            <input class="form-check-input" type="checkbox" value="" id="selectAll">
+                        </div>
+                    </th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">SingUpDate</th>
+                    <th scope="col">LastInDate</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thread>
+            <tbody>
+            <div id="MyDiv">
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <th scope="row">
+                            <div>
+                                <input class="form-check-input" id="checkedItem" type="checkbox" value="@user.Id" name="userId">
+                            </div>
+                        </th>
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.CreatedDate</td>
+                        <td>@user.LastLogInDate</td>
+                        @if (@user.Status)
+                        {
+                            <td>Active</td>
+                        }
+                        else
+                        {
+                            <td>Blocked</td>
+                        }
+                    </tr>
+                }
+                
+            </div>
+            </tbody>
+        </table>
+    </div>
+</div>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('#add-business-unit').click(function (e) {
+        var bu = $('#checkedItem').val();
+        if (bu != '') {
+            $('#BusinessUnits').append($('<option></option>').val(bu).html(bu));
+            $('#AddBusinessUnit').val('');
+        }
+        e.preventDefault();
+    });
+
+    $('#delete-business-unit').click(function (e) {
+        $('#BusinessUnits :selected').remove();
+        e.preventDefault();
+    });
+
+    $('input[type="submit"]').click(function () {
+        $('#BusinessUnits option').attr('selected', 'selected');
+    });
+
+});
+</script>
